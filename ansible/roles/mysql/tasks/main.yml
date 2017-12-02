@@ -1,0 +1,8 @@
+  - name: Install MySQL
+    yum: pkg=mysql-server state=present
+
+  - name: Start mysql, if not running
+    service: name=mysqld state=started
+
+  - name: Set the root user for MYSQL
+    mysql_user: name=root password={{ mysql_password }}

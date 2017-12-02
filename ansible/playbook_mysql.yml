@@ -1,0 +1,9 @@
+---
+- name: Install mysql using third party role.
+  hosts: "databases"
+  vars:
+    mysql_password:
+  become: true
+  become_user: root
+  roles:
+    - { role: geerlingguy.mysql }

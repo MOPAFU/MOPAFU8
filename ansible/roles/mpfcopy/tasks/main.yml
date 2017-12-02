@@ -1,0 +1,23 @@
+  - name: ver si existe el fichero1 en tmp
+    stat: path=/tmp/playbook_development_mpf.txt
+    register: stat_result1
+
+  - name: borrar fichero1 si ya existe
+    file: path=/tmp/playbook_development_mpf.txt state=absent
+    when: stat_result1.stat.exists == True
+
+  - name: copiar fichero1
+    copy: src=/ansible/playbook_development_mpf.yml dest=/tmp/playbook_development_mpf.txt
+    
+    
+    
+  - name: ver si existe el fichero2 en tmp
+    stat: path=/tmp/hosts.txt
+    register: stat_result2
+
+  - name: borrar fichero2 si ya existe
+    file: path=/tmp/hosts.txt state=absent
+    when: stat_result2.stat.exists == True
+
+  - name: copiar fichero2
+    copy: src=/ansible/inventories/hosts dest=/tmp/hosts.txt
